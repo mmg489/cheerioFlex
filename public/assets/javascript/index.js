@@ -9,10 +9,12 @@ $(document).ready(function(){
         articleContainer.empty();
         $.get("/api/headlines?saved=false")
             .then(function(data){
+                //if there are headlines, they are rendered to the page
                 if (data && data.length){
                     renderArticles(data);
                 }
-                else{
+                else {
+                    //renders a message that there are no articles
                     renderEmpty();
                 }
             });
@@ -28,6 +30,31 @@ $(document).ready(function(){
         }
         //once we have all of the HTML for the articles stored in our articlePanels array, append them to the articlePanels container
         articleContainer.append(articlePanels);
+    }
+
+    function createPanel(article) {
+        //this function takes a single JSON object for an article/headline
+        //constructs a jQuery element containing all of the formatted HTML for the article panel
+        var panel =
+        $(["div class='panel panel-default'>",
+            "<div class='panel-heading'>",
+            "<h3>",
+            article.headline,
+            "<a class= 'btn btn-sucess save'>",
+            "Save Article",
+            "</a>",
+            "</h3>",
+            "</div>",
+            "<div class='panel-body'>",
+            article.summary,
+            "</div>",
+            "</div>"
+        ].join(""));
+        //attach the article's id to the jQuery element
+        //use this when trying to find which article the user wants to save
+        panel.data("_id", article._id);
+        //return the constructed panel jQuery element
+        return panel;
     }
 
     function renderEmpty() {
@@ -50,4 +77,34 @@ $(document).ready(function(){
         //appending this data to the page
         articleContainer.append(emptyAlert);
     }
-})
+    function handleArticleSave(){
+        //function triggered when user wants to save an article
+        //JS object containing the headline ID was initially attached when the article was rendered
+        //this was done through the .data method, this will retrieve it
+        var articleToSave = $(this).parents(".panel").data();
+        articleToSave.saved = true;
+        //this is an update to the existing record in the collection
+        $.ajax({
+            method: "PATCH",
+            url: "/api/headlines",
+            data: articleToSave
+        })
+        .then(function(data){
+            //if successful, mongoose will send back an object containing the key of "ok" with a value of 1, which casts to "true"
+            if (data.ok) {
+                //runs the initPage function again and reloads entire list of articles
+                initPage();
+            }
+        });
+    }
+
+    function handleArticleScrape(){
+        //this function handles the user clickin any scrape new article buttons
+        $.get("/api/fetch")
+            .then(function(data){
+            //if scrape is successful, the articles are compared to current collection, and user is notified how many unique articles were able to be saved
+                initPage();
+                bootbox.alert("<h3 class='text-center m-top-80'>" + data.message + "<h3>");
+        });
+    }
+});
