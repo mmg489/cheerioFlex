@@ -1,52 +1,55 @@
-//require dependencies
+// require dependencies 
 var express = require("express");
 var mongoose = require("mongoose");
 var expressHandlebars = require("express-handlebars");
 var bodyParser = require("body-parser");
 
-//set up port 
-var PORT = process.env.PORT|| 3000;
+// set up port to the host port or 3000
+var PORT = process.env.PORT || 3000;
 
-//instantiate express app
+//initiate express app
 var app = express();
 
 //set up express router
 var router = express.Router();
 
-//Require our routes file pass our router object
+//require routes file to pass router object
 require("./config/routes")(router);
 
-//Designate public folder as a static directory
+//designate public folder as static directory
 app.use(express.static(__dirname + "/public"));
 
-//Connect Handlebars to our express app
-app.engine("handlebars",expressHandlebars({
+//connect handlebars
+app.engine("handlebars", expressHandlebars({
     defaultLayout: "main"
 }));
 app.set("view engine", "handlebars");
 
-//use bodyParser in our app
+
+//use bodyParser
 app.use(bodyParser.urlencoded({
-    extended:false
+    extended: false
 }));
 
-//Have all requests go through router middleware
+//make every request go through router middleware
 app.use(router);
-//if deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+
+// if deployed use the deployed database else use local mongoheadlines database
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-//connect mongoose to our database
+//connect mongoose to database
 mongoose.connect(db, function(error){
-    //log any errors connecting with mongoose
+    //log any errors in connecting
     if (error) {
         console.log(error);
     }
-    //or log a success message
+    //or log connection message
     else {
-        console.log("mongoose connection is successful");
+        console.log("mongoose connection successful");
     }
 });
-//Listen on PORT
-app.listen(PORT, function() {
+
+//listen on port
+app.listen(PORT, function(){
     console.log("Listening on port:" + PORT);
 });

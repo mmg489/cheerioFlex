@@ -12,9 +12,9 @@ var headlineSchema = new Schema({
         type: String,
         required: true
     },
-    date: String,
+    data: String,
     saved: {
-        type: Boolean,
+        type:Boolean,
         default: false
     }
 });
