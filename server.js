@@ -7,21 +7,6 @@ var bodyParser = require("body-parser");
 // set up port to the host port or 3000
 var PORT = process.env.PORT || 3000;
 
-// if deployed use the deployed database else use local mongoheadlines database
-var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-//connect mongoose to database
-mongoose.connect(db, function(error){
-    //log any errors in connecting
-    if (error) {
-        console.log(error);
-    }
-    //or log connection message
-    else {
-        console.log("mongoose connection successful");
-    }
-});
-
 //initiate express app
 var app = express();
 
@@ -48,6 +33,21 @@ app.use(bodyParser.urlencoded({
 
 //make every request go through router middleware
 app.use(router);
+
+// if deployed use the deployed database else use local mongoheadlines database
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+//connect mongoose to database
+mongoose.connect(db, function(error){
+    //log any errors in connecting
+    if (error) {
+        console.log(error);
+    }
+    //or log connection message
+    else {
+        console.log("mongoose connection successful");
+    }
+});
 
 //listen on port
 app.listen(PORT, function(){
