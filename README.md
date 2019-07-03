@@ -13,4 +13,4 @@
 
 https://drive.google.com/file/d/1o2XgAhePzVb9n1ZnEBqvIitOPxXy2P2r/view
 
-![Alt text](public/assets/images/MongoScraper.png?raw=true "MongoScraper")
+![Alt text](public/assets/images/MongoScraper2.png?raw=true "MongoScraper")

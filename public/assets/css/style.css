@@ -1,12 +1,12 @@
 body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Barriecito', cursive;
 }
 h3,.panel-default>.panel-heading{
     color:white;
     background-color:rgb(213, 14, 123);
 }
 .navbar-inverse .navbar-brand:hover{
-    background-color:#e51c23;
+    background-color:purple;
 }
 a{
     background-color: rgb(230,112,177);
@@ -19,16 +19,16 @@ a.btn.btn-danger.delete,a.btn.btn-info.notes{
     background-color: rgb(237,43,141);
 }
 a.btn.btn-success.save:hover{
-    background-color: #e51c23;
+    background-color: purple;
 }
 a.btn.btn-danger.delete,a.btn.btn-info.notes:hover{
-    background-color: #e51c23;
+    background-color: purple;
 }
 button.btn.btn-success.save{
-    background-color:#e51c23;
+    background-color:purple;
 }
 .btn-primary:hover, .btn-primary:active:hover{
-    background-color: #e51c23;
+    background-color: purple;
 }
 .btn-primary:active{
     background-image: radial-gradient(circle, #843960 10%, #aa4caf 11%) !important;
@@ -42,7 +42,7 @@ button.btn.btn-success.save{
     margin-left: 10px;
 }
 .btn:hover{
-    background-color: #e51c23;
+    background-color: purple;
     color: white;
 }
 .nav.navbar-nav,a.btn.btn-danger.scrape-new{
@@ -50,18 +50,18 @@ button.btn.btn-success.save{
 }
 .panel-body{
     font-size:18px;
-    color:rgb(237,43,141);
+    color:purple;
 }
 .navbar-inverse .navbar-nav>.active>a:hover{
-    background-color: #e51c23;
+    background-color: purple;
     color: white;
 }
 .navbar-inverse .navbar-nav>li>a:hover{
-    background-color: #e51c23;
+    background-color: purple;
     color: white;
 }
 .container-fluid {
-    background-color: rgb(155, 150, 152);
+    background-image: url("https://wallpapertag.com/wallpaper/full/9/7/1/733417-large-polish-wallpapers-1920x1080.jpg");
     padding: 40px;
    
 }
@@ -74,24 +74,24 @@ button.btn.btn-success.save{
     
 }
 .container-fluid.article-container{
+    background-image: url("https://wallpapertag.com/wallpaper/full/9/7/1/733417-large-polish-wallpapers-1920x1080.jpg");
     padding:80px;
 }
 div.jumbotron.text-center{
-    background-image: url("https://www.desktopbackground.org/download/1280x1024/2015/07/15/979981_wallpaper-backgrounds-girly-wallpapers-pink-hd-cute-girly-animated_1920x1024_h.jpg");
     padding: -10px;
+    background-color: #D50E7B
 }
 footer{
     padding:50px;
-    background-image: url("https://www.desktopbackground.org/download/1280x1024/2015/07/15/979981_wallpaper-backgrounds-girly-wallpapers-pink-hd-cute-girly-animated_1920x1024_h.jpg")
 }
 .footer-container{
     margin-top:-48px;
 }
 div.alert.alert-warning.text-center{
-    background-color:#e51c23
+    background-color:purple
 }
 a.btn.btn-danger.scrape-new {
-    background-color: #e51c23
+    background-color: purple
 }
 .navbar-inverse .navbar-brand{
     background-color: rgb(230,112,177);
