@@ -1,5 +1,3 @@
-// Controller for Notes
-///======================
 var Note = require("../models/Note");
 var makeDate = require("../scripts/date");
 
