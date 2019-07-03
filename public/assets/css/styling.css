@@ -1,0 +1,10 @@
+body{
+    font-family: 'Barriecito', cursive;
+    color: hotpink;
+    
+}
+
+div.jumbotron.text-center{
+    background-image: url("http://pavbca.com/walldb/original/f/0/8/32395.jpg");
+    color:purple;
+}
